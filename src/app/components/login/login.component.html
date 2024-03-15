@@ -1,0 +1,42 @@
+﻿<div class="text-center page">
+  <img src="/assets/icons/logo.png" class="w-150 mx-auto block" />
+
+  <form class="login-form" [formGroup]="loginForm" nz-row>
+    <h2>{{ 'loginTitle' | translate }}</h2>
+
+    <nz-form-control [nzErrorTip]="usernameErrorTemplate" nz-col [nzSpan]="24" class="pd-bottom-login">
+      <nz-input-group nzPrefixIcon="user">
+        <input nz-input formControlName="email" placeholder="{{ 'userNameLogin' | translate }}" />
+      </nz-input-group>
+      <ng-template #usernameErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('maxLength')">{{
+          'validationMessages.maxLength' | translate
+        }}</ng-container>
+        <ng-container *ngIf="control.hasError('required')">{{
+          'validationMessages.requiredEmail' | translate
+        }}</ng-container>
+        <ng-container *ngIf="control.hasError('email')">{{ 'validationMessages.isEmail' | translate }}</ng-container>
+      </ng-template>
+    </nz-form-control>
+
+    <nz-form-control [nzErrorTip]="passwordErrorTemplate" nz-col [nzSpan]="24" class="pd-bottom-login">
+      <nz-input-group nzPrefixIcon="lock">
+        <input nz-input type="password" formControlName="password" placeholder="{{ 'password' | translate }}" />
+      </nz-input-group>
+    </nz-form-control>
+    <ng-template #passwordErrorTemplate let-controller>
+      <ng-container *ngIf="controller.hasError('minlength')">
+        <span>
+          {{ 'validationMessages.passwordMinLength' | translate }}
+        </span>
+      </ng-container>
+      <ng-container *ngIf="controller.hasError('maxlength')">{{
+        'validationMessages.passwordMaxLength' | translate
+      }}</ng-container>
+      <ng-container *ngIf="controller.hasError('required')">{{
+        'validationMessages.passwordRequired' | translate
+      }}</ng-container>
+    </ng-template>
+    <button nz-button [disabled]="!loginForm.valid" type="submit" (click)="login()">{{ 'login' | translate }}</button>
+  </form>
+</div>

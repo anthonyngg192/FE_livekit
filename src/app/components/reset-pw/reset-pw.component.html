@@ -1,0 +1,11 @@
+<div class="center page">
+  <nz-card nzHoverable class="login-form">
+    <form (ngSubmit)="resetPw()">
+      <h2>Đặt lại mật khẩu</h2>
+
+      <input nz-input [(ngModel)]="password" name="password" type="password" placeholder="Mật khẩu" />
+      <input nz-input [(ngModel)]="rePassword" name="rePassword" type="password" placeholder="Nhập lại mật khẩu" />
+      <button nz-button type="submit">{{ 'confirm' | translate }}</button>
+    </form>
+  </nz-card>
+</div>

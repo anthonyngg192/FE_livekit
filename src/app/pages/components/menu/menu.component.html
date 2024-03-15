@@ -1,0 +1,38 @@
+<ul *ngIf="menus.length" nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+  <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: { menus: menus, level: 0 } }"></ng-container>
+  <ng-template #menuTpl let-ctx>
+    <ng-container *ngFor="let menu of ctx.menus">
+      <li
+        *ngIf="!menu.children"
+        nz-menu-item
+        nzMatchRouter
+        [nzPaddingLeft]="ctx.level * 60"
+        [nzDisabled]="menu.disabled"
+        [nzSelected]="menu.selected"
+        class="menu"
+      >
+        <i *ngIf="menu.icon" nz-icon><img src="{{ menu.icon }}" alt="icon" /></i>
+        <a routerLink="/page/{{ menu.link }}">{{ menu.name | translate }}</a>
+      </li>
+      <li
+        *ngIf="menu.children"
+        nz-submenu
+        nzMatchRouter
+        [nzPaddingLeft]="ctx.level * 60"
+        [(nzOpen)]="menu.open"
+        [nzTitle]="menuItemTitle"
+        class="sub-menu"
+      >
+        <ul>
+          <ng-container
+            *ngTemplateOutlet="menuTpl; context: { $implicit: { menus: menu.children, level: ctx.level + 1 } }"
+          ></ng-container>
+        </ul>
+      </li>
+      <ng-template #menuItemTitle>
+        <i *ngIf="menu.icon" nz-icon><img src="{{ menu.icon }}" alt="icon" /></i>
+        <span *ngIf="!isCollapsed">{{ menu.name | translate }}</span>
+      </ng-template>
+    </ng-container>
+  </ng-template>
+</ul>

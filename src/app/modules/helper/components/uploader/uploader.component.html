@@ -1,0 +1,33 @@
+<div class="clearfix">
+  <nz-upload
+    [nzData]="upData"
+    [nzCustomRequest]="customUpload"
+    [nzListType]="upListType"
+    [(nzFileList)]="upFileList"
+    nzName="files"
+    (nzChange)="onFileListChange($event)"
+    [nzShowButton]="upShowButton"
+    [nzPreview]="handlePreview"
+    [nzShowUploadList]="showUploadList"
+    [nzFileType]="upFileType"
+    [nzAccept]="acceptType"
+    [nzBeforeUpload]="beforeUpload"
+  >
+    <button *ngIf="upListType === 'text'" nz-button>
+      <span nz-icon nzType="upload"></span>
+      {{ 'clickToAdd' | translate }}
+    </button>
+    <ng-template [ngIf]="upListType !== 'text'">
+      <i nz-icon nzType="file-add" nzTheme="outline"></i>
+      <div class="ant-upload-text">{{ 'add' | translate }}</div>
+    </ng-template>
+  </nz-upload>
+  <nz-modal [nzVisible]="previewVisible" [nzFooter]="null" (nzOnCancel)="onCancel()" [nzMaskClosable]="false">
+    <ng-container *nzModalContent>
+      <img [src]="previewImage" [ngStyle]="{ width: '100%' }" *ngIf="previewImage" />
+      <video style="margin-top: 20px" [ngStyle]="{ width: '100%' }" *ngIf="previewVideo" controls>
+        <source [src]="previewVideo" type="video/mp4" />
+      </video>
+    </ng-container>
+  </nz-modal>
+</div>

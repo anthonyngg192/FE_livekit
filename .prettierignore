@@ -1,0 +1,13 @@
+build
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+***/assets
+.angular
+.vscode
+e2e
+**/dist
+package.json
+package-log.json
+nest-cli.json

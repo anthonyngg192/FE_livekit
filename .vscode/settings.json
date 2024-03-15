@@ -1,0 +1,38 @@
+{
+  "cSpell.words": [
+    "antd",
+    "cloudservices",
+    "datetime",
+    "easyimage",
+    "ecommerce",
+    "filebrowser",
+    "Lazada",
+    "Lucida",
+    "moono",
+    "multilang",
+    "Shopee",
+    "tabset",
+    "Tahoma",
+    "Telesale",
+    "tiktok",
+    "twotone",
+    "Verdana"
+  ],
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.sortJSON": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true,
+  "lingua.warnAboutFlatAndMixedTranslationKeys": false,
+  "sortJSON.excludedFiles": [
+    "package.json",
+    "package-lock.json"
+  ],
+  "typescript.extension.sortImports.maxNamedImportsInSingleLine": 10,
+  "typescript.extension.sortImports.sortOnSave": true,
+  "typescript.preferences.quoteStyle": "single"
+}

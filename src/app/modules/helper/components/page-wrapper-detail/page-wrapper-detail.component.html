@@ -1,0 +1,9 @@
+<nz-page-header [nzTitle]="title" [nzSubtitle]="subTitle" (nzBack)="onBack()" nzBackIcon>
+  <nz-page-header-extra *ngIf="extra">
+    <ng-container [ngTemplateOutlet]="extra"></ng-container>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<div class="p-2">
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,8 @@
+{
+  "translationFiles": [
+    {
+      "lang": "vi",
+      "uri": "src/assets/i18n/vi.json"
+    }
+  ]
+}

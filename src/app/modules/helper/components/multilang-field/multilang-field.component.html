@@ -1,0 +1,60 @@
+<ng-template [ngIf]="isText">
+  <ng-template #selectLangTpl>
+    <nz-select nzShowSearch [(ngModel)]="selectedLocale" style="width: 110px !important">
+      <nz-option
+        *ngFor="let locale of locales"
+        [nzValue]="locale"
+        [nzLabel]="'language-' + locale | translate"
+      ></nz-option>
+    </nz-select>
+  </ng-template>
+  <ng-template #switchLangTpl>
+    <span (click)="switchLanguage()" nz-icon nzType="global" nzTheme="outline" class="cursor-pointer"></span>
+  </ng-template>
+  <nz-input-group [nzAddOnBefore]="selectLangTpl" [nzAddOnAfter]="switchLangTpl">
+    <input
+      *ngFor="let locale of locales"
+      [hidden]="selectedLocale !== locale"
+      nz-input
+      type="text"
+      [(ngModel)]="innerValue[locale]"
+      name="{{ name }}"
+      (ngModelChange)="change()"
+      [readonly]="disabled"
+    />
+  </nz-input-group>
+</ng-template>
+
+<ng-template [ngIf]="isTextarea">
+  <nz-tabset nzType="card" nzSize="small">
+    <nz-tab *ngFor="let locale of locales" [nzTitle]="'language-' + locale | translate">
+      <textarea
+        nz-input
+        [(ngModel)]="innerValue[locale]"
+        name="{{ name }}"
+        [rows]="rows"
+        [readonly]="disabled"
+        (ngModelChange)="change()"
+      ></textarea>
+    </nz-tab>
+  </nz-tabset>
+</ng-template>
+
+<ng-template [ngIf]="isHTML">
+  <nz-tabset nzType="card" nzSize="small">
+    <nz-tab *ngFor="let locale of locales" [nzTitle]="'language-' + locale | translate">
+      <ng-template nz-tab>
+        <ckeditor
+          [(ngModel)]="innerValue[locale]"
+          (ngModelChange)="change()"
+          name="{{ name }}"
+          skin="moono-lisa"
+          [config]="ckeditorConfig"
+          debounce="500"
+          [readonly]="disabled"
+        >
+        </ckeditor>
+      </ng-template>
+    </nz-tab>
+  </nz-tabset>
+</ng-template>

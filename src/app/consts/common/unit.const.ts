@@ -1,0 +1,16 @@
+export const Units = [
+  '%',
+  'cm2',
+  'm',
+  'km',
+  'package',
+  'piece',
+  'lit',
+  'g',
+  'kg',
+  'minute',
+  'hour',
+  'day',
+  'month',
+  'year',
+];

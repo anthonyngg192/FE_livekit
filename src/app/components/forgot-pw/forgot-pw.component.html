@@ -1,0 +1,29 @@
+<div class="center page">
+  <nz-card nzHoverable class="login-form">
+    <form (ngSubmit)="forgotPw()" *ngIf="forgotPwPage">
+      <h2>Đặt lại mật khẩu</h2>
+
+      <input nz-input [(ngModel)]="email" name="email" placeholder="Email/Số điện thoại" />
+      <div nz-row class="captcha">
+        <re-captcha required class="g-recaptcha" siteKey="6Ld8FMQZAAAAACPIr_swcrkImS3R0_OyqF5BQ9a4"> </re-captcha>
+      </div>
+      <button nz-button type="submit">{{ 'confirm' | translate }}</button>
+      <p class="register-text">Bạn đã chưa có tài khoản zensen? <a href="#">Đăng ký</a></p>
+    </form>
+
+    <form (ngSubmit)="notifyResetPw()" *ngIf="notifyResetPwPage">
+      <h2>Đặt lại mật khẩu</h2>
+      <img src="/assets/images/letter.png" />
+
+      <div class="notify">
+        <span
+          >Mã xác minh đã được gửi đến địa chỉ email <br />
+          <span style="color: #25a2c0"> {{ email }}</span
+          >.<br />
+          Vui lòng xác minh.</span
+        >
+      </div>
+      <button nz-button type="submit">Đồng Ý</button>
+    </form>
+  </nz-card>
+</div>
