@@ -1,49 +1,9 @@
 <nz-layout class="app-layout">
-  <nz-sider
-    class="menu-sidebar"
-    nzCollapsible
-    nzWidth="256px"
-    nzBreakpoint="md"
-    [(nzCollapsed)]="isCollapsed"
-    [nzTrigger]="null"
-  >
-    <div class="sidebar-logo">
-      <a href="/">
-        <img src="/assets/icons/logo.png" alt="logo" />
-      </a>
-    </div>
-    <app-menu [isCollapsed]="isCollapsed"></app-menu>
-  </nz-sider>
-
   <nz-layout>
     <nz-header>
       <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
-        </span>
-
-        <a
-          nz-dropdown
-          class="page-top__item"
-          [nzDropdownMenu]="languageMenu"
-          [nzPlacement]="'bottomRight'"
-          class="header-trigger language"
-        >
-          {{ 'language' | translate }}
-        </a>
-        <nz-dropdown-menu #languageMenu="nzDropdownMenu">
-          <ul nz-menu>
-            <li nz-menu-item>
-              <a (click)="changeLanguage('vi', 'VN')">{{ 'language-vi' | translate }}</a>
-            </li>
-            <li nz-menu-item>
-              <a (click)="changeLanguage('en', 'US')">{{ 'language-en' | translate }}</a>
-            </li>
-          </ul>
-        </nz-dropdown-menu>
-
         <a routerLink="/page/profile" nz-dropdown [nzDropdownMenu]="profile" class="header-trigger profile">
-          {{ account.name }}
+          {{ account.email }}
         </a>
         <nz-dropdown-menu #profile="nzDropdownMenu">
           <ul nz-menu>

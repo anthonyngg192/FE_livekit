@@ -1,1 +1,41 @@
-Xin chào!
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Livekit Sample App</h2>
+      <br />
+
+      <div id="inputs-area">
+        <div>
+          audio
+          <select class="custom-select">
+            <option *ngFor="let item of videoInputs">{{ item.label }}</option>
+          </select>
+        </div>
+        <div>
+          <select class="custom-select">
+            <option *ngFor="let item of audioInputs">{{ item.label }}</option>
+          </select>
+        </div>
+        <div>
+          <select class="custom-select">
+            <option *ngFor="let item of audioOutputs">{{ item.label }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="screenshare-area">
+    <div>
+      <span id="screenshare-info"> </span>
+      <span id="screenshare-resolution"> </span>
+    </div>
+    <video #videoEle id="screenshare-video" autoplay playsinline></video>
+  </div>
+
+  <div id="participants-area"></div>
+
+  <div id="log-area">
+    <textarea id="log"></textarea>
+  </div>
+</div>

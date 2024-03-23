@@ -20,9 +20,7 @@ export class PageComponent implements OnInit {
     this.account = this.sessionService.currentUser;
   }
 
-  async ngOnInit() {
-    this.sessionService.permissions$.next(await this.profileService.getPermissions());
-  }
+  async ngOnInit() {}
 
   logout() {
     this.sessionService.logout();

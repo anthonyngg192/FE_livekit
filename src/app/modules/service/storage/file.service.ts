@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FileService extends BaseHttpService<FileModel> {
-  protected baseUrl: string = environment.uploadUrl;
+  protected baseUrl: string = environment.apiEndpoint;
   // protected baseUrl: string = 'http://127.0.0.1:5015/admin/api';
 
   protected key = 'file';

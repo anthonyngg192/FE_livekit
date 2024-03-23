@@ -15,7 +15,7 @@ export class UploadService {
 
   async uploadBase64(data: UploadFilesModel) {
     data.files = _.map(data.files, (x) => resizebase64(x, 800, 800) as string);
-    return this.httpService.post(`${environment.uploadUrl}/file/upload`, data);
+    return this.httpService.post(`${environment.apiEndpoint}/file/upload`, data);
   }
 
   async upload(data: UploadFilesModel, options = null) {
@@ -24,7 +24,7 @@ export class UploadService {
     if (base64Data.files !== undefined && base64Data.files.length > 0) {
       base64Data.files = _.filter<string>(base64Data.files, (file) => !file.includes('http://'));
       const uploadResult = await this.http
-        .post(`${environment.uploadUrl}/file/upload`, base64Data, this.httpService.prepareSendRequest(options))
+        .post(`${environment.apiEndpoint}/file/upload`, base64Data, this.httpService.prepareSendRequest(options))
         .toPromise()
         .then((x) => JSON.parse(JSON.stringify(x)) as { fullPath: string }[])
         .catch(this.httpService.handleError.bind(this));
@@ -48,7 +48,7 @@ export class UploadService {
     }
     formData.append(file.name, file.file);
     return this.http
-      .post(`${environment.uploadUrl}/file/upload`, formData, this.httpService.prepareSendRequest(options))
+      .post(`${environment.apiEndpoint}/file/upload`, formData, this.httpService.prepareSendRequest(options))
       .subscribe(async (event) => {
         // eslint-disable-next-line @typescript-eslint/await-thenable
         const responseData = await event;

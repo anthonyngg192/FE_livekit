@@ -3,7 +3,6 @@ import { ForgotPwComponent } from '../components/forgot-pw/forgot-pw.component';
 import { HelperModule } from '../modules/helper/helper.module';
 import { LockOutline, UserOutline } from '@ant-design/icons-angular/icons';
 import { LoginComponent } from '../components/login/login.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -32,6 +31,6 @@ import { RouterModule } from '@angular/router';
       },
     ]),
   ],
-  declarations: [PageComponent, MenuComponent],
+  declarations: [PageComponent],
 })
 export class PageModule {}
